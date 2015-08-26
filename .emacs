@@ -16,3 +16,24 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (put 'scroll-left 'disabled nil)
+
+
+
+   (require 'js2-refactor)
+    (add-hook 'js2-mode-hook #'js2-refactor-mode)
+    (js2r-add-keybindings-with-prefix "C-c C-m")
+
+
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+     	(tern-ac-setup)))
+
+;;(require 'auto-complete-mode)
+
+
+(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
+(autoload 'tern-mode "tern.el" nil t)
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+
+
